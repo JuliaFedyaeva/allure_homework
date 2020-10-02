@@ -29,12 +29,12 @@ def browser(request):
         document = webdriver.Chrome(options=options)
         document.implicitly_wait(5)
 
-    if browser_name == "firefox":
+    elif browser_name == "firefox":
         print("\nstart firefox browser for test..")
         document = webdriver.Firefox(firefox_profile=fp)
         document.implicitly_wait(5)
     else:
-        print("Browser {} still is not implemented".format(browser_name))
+        raise Exception('Browser for tests is not selected')
 
     yield document
     print("\nquit document..")
